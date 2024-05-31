@@ -45,7 +45,12 @@ services:
   # Database service
   mongodb:
     image: mongo:latest
+    deploy:
+     placement:
+       constraints:
+        - node.labels.role==database
     container_name: mongodb_server
+    
 
     env_file: ./.env
     environment:
